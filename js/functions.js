@@ -20,18 +20,62 @@ function appendNumber(resultDisplay, number) {
 /**
  * Gestisce l'operazione selezionata.
  * @param {HTMLElement} resultDisplay - L'elemento del risultato.
- * @param {string} operator - L'operatore selezionato.
+ * @param {string} selectedOperator - L'operatore selezionato.
  */
-function handleOperation(resultDisplay, operator) {
-    // Memorizza l'operatore selezionato
-    console.log('Operatore selezionato:', operator);
+function handleOperation(resultDisplay, selectedOperator) {
+    // Ottengo il primo operando dal display
+    let firstOperand = resultDisplay.textContent;
 
-    // Memorizza il primo operando
-    const firstOperand = resultDisplay.textContent;
+    // Memorizzo l'operatore selezionato e il primo operando
+    operator = selectedOperator;
+    firstOperandValue = parseInt(firstOperand);
 
-    // Resetta il numero visualizzato sul display
-    resultDisplay.textContent = '0';
+    // Resetto il numero visualizzato sul display
+    resultDisplay.textContent = '';
 
-    // Log del primo operando
-    console.log('Primo operando:', firstOperand);
+    // Log dell'operazione di gestione dell'operatore
+    console.log(`Operatore selezionato: ${selectedOperator}, Primo operando: ${firstOperand}`);
+}
+
+/**
+ * Esegue il calcolo in base all'operatore selezionato.
+ * @param {HTMLElement} resultDisplay - L'elemento del risultato.
+ */
+function calculate(resultDisplay) {
+    // Ottengo il secondo operando dal display
+    let secondOperand = resultDisplay.textContent;
+
+    // Converto gli operandi in numeri
+    let num1 = parseInt(firstOperandValue);
+    let num2 = parseInt(secondOperand);
+
+    // Eseguo il calcolo in base all'operatore selezionato
+    let result;
+    switch (operator) {
+        case '+':
+            result = num1 + num2;
+            break;
+        case '-':
+            result = num1 - num2;
+            break;
+        case 'x':
+            result = num1 * num2;
+            break;
+        case '÷':
+            // Controllo divisione per zero
+            if (num2 === 0) {
+                alert("Non puoi dividere per zero!");
+                return;
+            }
+            result = num1 / num2;
+            break;
+        default:
+            return;
+    }
+
+    // Aggiorno il display con il risultato
+    resultDisplay.textContent = result;
+
+    // Log del risultato del calcolo
+    console.log(`Risultato del calcolo: ${result}`);
 }

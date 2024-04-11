@@ -26,13 +26,29 @@ document.addEventListener('DOMContentLoaded', function () {
     operatorButtons.forEach(button => {
         button.addEventListener('click', function () {
             // Ottengo l'operatore cliccato
-            let clickedOperator = button.textContent;
+            let selectedOperator = button.textContent;
 
             // Chiamo la funzione per gestire l'operazione selezionata
-            handleOperation(resultDisplay, clickedOperator);
+            handleOperation(resultDisplay, selectedOperator);
         });
 
         // Log dell'operatore del pulsante cliccato
-        console.log(`Aggiunto event listener per l'operatore ${button.textContent}`);
+        console.log(`Aggiunto event listener per il pulsante ${button.textContent}`);
+    });
+
+    // Seleziono il pulsante '='
+    const equalsButton = document.querySelector('.row.numbers .orange');
+
+    // Aggiungo un event listener al pulsante =
+    equalsButton.addEventListener('click', function () {
+        // Ottengo il secondo operando dal display
+        let secondOperand = resultDisplay.textContent;
+
+        // Eseguo il calcolo utilizzando il primo e il secondo operando
+        calculate(resultDisplay);
+
+        // Log dell'operazione di calcolo
+        console.log(`Calcolato risultato con secondo operando ${secondOperand}`);
     });
 });
+
