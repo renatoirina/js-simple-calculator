@@ -18,4 +18,21 @@ document.addEventListener('DOMContentLoaded', function () {
         // Log del numero del pulsante cliccato
         console.log(`Aggiunto event listener per il pulsante ${button.textContent}`);
     });
+
+    // Seleziono tutti i pulsanti degli operatori
+    const operatorButtons = document.querySelectorAll('.row.operators button');
+
+    // Aggiungo un event listener a ciascun pulsante operatore
+    operatorButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            // Ottengo l'operatore cliccato
+            let clickedOperator = button.textContent;
+
+            // Chiamo la funzione per gestire l'operazione selezionata
+            handleOperation(resultDisplay, clickedOperator);
+        });
+
+        // Log dell'operatore del pulsante cliccato
+        console.log(`Aggiunto event listener per l'operatore ${button.textContent}`);
+    });
 });

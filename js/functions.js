@@ -16,3 +16,22 @@ function appendNumber(resultDisplay, number) {
     // Log del numero aggiunto al display
     console.log(`Numero aggiunto al display: ${number}`);
 }
+
+/**
+ * Gestisce l'operazione selezionata.
+ * @param {HTMLElement} resultDisplay - L'elemento del risultato.
+ * @param {string} operator - L'operatore selezionato.
+ */
+function handleOperation(resultDisplay, operator) {
+    // Memorizza l'operatore selezionato
+    console.log('Operatore selezionato:', operator);
+
+    // Memorizza il primo operando
+    const firstOperand = resultDisplay.textContent;
+
+    // Resetta il numero visualizzato sul display
+    resultDisplay.textContent = '0';
+
+    // Log del primo operando
+    console.log('Primo operando:', firstOperand);
+}
