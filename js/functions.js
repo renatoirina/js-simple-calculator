@@ -28,7 +28,7 @@ function handleOperation(resultDisplay, selectedOperator) {
 
     // Memorizzo l'operatore selezionato e il primo operando
     operator = selectedOperator;
-    firstOperandValue = parseInt(firstOperand);
+    firstOperandValue = parseFloat(firstOperand);
 
     // Resetto il numero visualizzato sul display
     resultDisplay.textContent = '';
@@ -46,8 +46,12 @@ function calculate(resultDisplay) {
     let secondOperand = resultDisplay.textContent;
 
     // Converto gli operandi in numeri
-    let num1 = parseInt(firstOperandValue);
-    let num2 = parseInt(secondOperand);
+    let num1 = parseFloat(firstOperandValue);
+    let num2 = parseFloat(secondOperand);
+
+    // Log dei valori dei numeri
+    console.log('num1:', num1);
+    console.log('num2:', num2);
 
     // Eseguo il calcolo in base all'operatore selezionato
     let result;
@@ -58,7 +62,7 @@ function calculate(resultDisplay) {
         case '-':
             result = num1 - num2;
             break;
-        case 'x':
+        case '×':
             result = num1 * num2;
             break;
         case '÷':
@@ -73,9 +77,25 @@ function calculate(resultDisplay) {
             return;
     }
 
+    // Log del risultato del calcolo
+    console.log('Risultato:', result);
+
     // Aggiorno il display con il risultato
     resultDisplay.textContent = result;
 
+    // Resetto le variabili globali
+    firstOperandValue = result.toString();
+    operator = '';
+
     // Log del risultato del calcolo
     console.log(`Risultato del calcolo: ${result}`);
+}
+
+/**
+ * Cancella il display.
+ * @param {HTMLElement} resultDisplay - L'elemento del risultato.
+ */
+function clearDisplay(resultDisplay) {
+    // Resetta il numero visualizzato sul display
+    resultDisplay.textContent = '0';
 }

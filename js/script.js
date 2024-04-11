@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(`Aggiunto event listener per il pulsante ${button.textContent}`);
     });
 
-    // Seleziono il pulsante '='
+    // Seleziono il pulsante =
     const equalsButton = document.querySelector('.row.numbers .orange');
 
     // Aggiungo un event listener al pulsante =
@@ -49,6 +49,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Log dell'operazione di calcolo
         console.log(`Calcolato risultato con secondo operando ${secondOperand}`);
+    });
+
+    // Seleziono il pulsante Canc
+    const cancelButton = document.querySelector('.row.operators .orange');
+
+    // Aggiungo un event listener al pulsante Canc
+    cancelButton.addEventListener('click', function () {
+        // Chiamo la funzione per cancellare il display
+        clearDisplay(resultDisplay);
+
+        // Log dell'operazione di cancellazione
+        console.log('Cancellato il display');
     });
 });
 
